@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  roach:
+    container_name: cockroach-kimia
+    image: cockroachdb/cockroach:latest
+    command: start --insecure
+    networks:
+        - roachnet
+    volumes:
+      - ./data/roach-ui:/cockroach/cockroach-data
+networks:
+  roachnet:
