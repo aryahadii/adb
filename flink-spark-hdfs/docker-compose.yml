@@ -24,9 +24,11 @@ services:
       - 4040
       - 8080
     links:
-      - namenode:hdfs
+      - namenode
     networks:
       - flink-spark
+    volumes:
+      - ./conf/master:/conf
 
   spark-worker:
     image: gettyimages/spark:2.3.0-hadoop-2.8
@@ -42,6 +44,7 @@ services:
       CORE_CONF_fs_defaultFS: hdfs://hdfs:8020
     links:
       - spark-master:master
+      - namenode
     expose:
       - 7012
       - 7013
@@ -49,10 +52,10 @@ services:
       - 7015
       - 8881
       - 8081
-    links:
-      - namenode:hdfs
     networks:
       - flink-spark
+    volumes:
+      - ./conf/master:/conf
 
   # Apache Flink
 
@@ -66,7 +69,7 @@ services:
     environment:
       - JOB_MANAGER_RPC_ADDRESS=jobmanager
     links:
-      - namenode:hdfs
+      - namenode
     networks:
       - flink-spark
 
@@ -81,7 +84,7 @@ services:
     command: taskmanager
     links:
       - flink-jobmanager:jobmanager
-      - namenode:hdfs
+      - namenode
     environment:
       - JOB_MANAGER_RPC_ADDRESS=jobmanager
     networks:
