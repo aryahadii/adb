@@ -1,0 +1,10 @@
+postgres:
+  image: postgres:latest
+  expose:
+    - 5432
+  restart: always
+  volumes:
+    - ./data:/var/lib/postgresql/data
+  environment:
+    POSTGRES_PASSWORD: root
+    POSTGRES_USER: root
