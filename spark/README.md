@@ -38,7 +38,6 @@ Follow submitted code log:
 $ docker logs -f spark_submit
 ```
 
-Also you can check spark webUI at: http://[serverIP]:8080
 
 ## 4. Stop
 
