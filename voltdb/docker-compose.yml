@@ -1,0 +1,20 @@
+version: '3'
+services:
+  voltdb-node1:
+    ports:
+      - '21212'
+      - '21211'
+      - '8080'
+      - '3021'
+    image: 'voltdb/voltdb-community:latest'
+    environment:
+      - 'HOSTCOUNT=1'
+      - 'HOSTS=voltdb-node1'
+    networks:
+      - voltdb-network
+    entrypoint: >
+      sh -c "voltdb init -C /opt/voltdb/deployment.xml -D /var/voltdb/ &&
+            voltdb start -H voltdb-node1 -D /var/voltdb/ --ignore=thp"
+networks:
+  voltdb-network:
+    driver: 'bridge'
