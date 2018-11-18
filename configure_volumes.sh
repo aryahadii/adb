@@ -1,5 +1,7 @@
 #! /bin/bash
+# getting a string and make desire dirs and change all valumes in docker-compose files
 
+mkdir /mnt/storage/$@
 mkdir /mnt/storage/$@/data
 mkdir /mnt/storage/$@/data/postgres
 mkdir /mnt/storage/$@/data/cockroach
