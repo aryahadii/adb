@@ -8,6 +8,6 @@ services:
     networks:
         - roachnet
     volumes:
-      - ./data/roach-ui:/cockroach/cockroach-data
+      - /mnt/storage/HOME/data/cockroach:/cockroach/cockroach-data
 networks:
   roachnet:

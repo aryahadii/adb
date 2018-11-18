@@ -96,7 +96,7 @@ services:
     image: bde2020/hadoop-namenode:1.2.1-hadoop2.8-java8
     container_name: namenode
     volumes:
-      - hadoop_namenode:/hadoop/dfs/name
+      - /mnt/storage/HOME/data/hdfs/nodename:/hadoop/dfs/name
     environment:
       - CLUSTER_NAME=db
     env_file:
@@ -122,7 +122,7 @@ services:
       - namenode
       - datanode
     volumes:
-      - hadoop_historyserver:/hadoop/yarn/timeline
+      - /mnt/storage/HOME/data/hdfs/historyserver:/hadoop/yarn/timeline
     env_file:
       - ./hadoop.env
     networks:
@@ -145,19 +145,11 @@ services:
     depends_on:
       - namenode
     volumes:
-      - hadoop_datanode:/hadoop/dfs/data
+      - /mnt/storage/HOME/data/hdfs/datanode:/hadoop/dfs/data
     env_file:
       - ./hadoop.env
     networks:
       - flink-spark
-
-volumes:
-  hadoop_namenode:
-    name: hdfs-nodename
-  hadoop_datanode:
-    name: hdfs-datanode
-  hadoop_historyserver:
-    name: hdfs-historyserver
 
 networks:
   flink-spark:
