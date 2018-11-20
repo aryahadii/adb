@@ -17,11 +17,8 @@ services:
       - 7005
       - 7077
       - 6066
-    ports:
-      - 4040:4040
-      - 6066:6066
-      - 7077:7077
-      - 8080:8080
+      - 4040
+      - 8080
     volumes:
       - ./conf/master:/conf
     networks:
@@ -47,8 +44,7 @@ services:
       - 7014
       - 7015
       - 8881
-    ports:
-      - 8081:8081
+      - 8081
     volumes:
       - ./conf/worker:/conf
     networks:
