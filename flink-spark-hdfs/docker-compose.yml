@@ -11,7 +11,7 @@ services:
     hostname: master
     environment:
       MASTER: spark://master:7077
-      SPARK_PUBLIC_DNS: 194.34.160.12
+      SPARK_PUBLIC_DNS: localhost
       CORE_CONF_fs_defaultFS: hdfs://hdfs:8020
     expose:
       - 7001
