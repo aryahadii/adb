@@ -10,6 +10,8 @@ services:
     environment:
       - 'HOSTCOUNT=1'
       - 'HOSTS=voltdb-node1'
+    volumes:
+      - /data:/data:ro
     networks:
       - voltdb-network
     entrypoint: >

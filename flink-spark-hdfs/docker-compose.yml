@@ -29,6 +29,8 @@ services:
       - flink-spark
     volumes:
       - ./conf/master:/conf
+      - /data:/data:ro
+
 
   spark-worker:
     image: gettyimages/spark:2.3.0-hadoop-2.8
@@ -56,6 +58,7 @@ services:
       - flink-spark
     volumes:
       - ./conf/master:/conf
+      - /data:/data:ro
 
   # Apache Flink
 
@@ -97,6 +100,7 @@ services:
     container_name: namenode
     volumes:
       - /mnt/storage/HOME/data/hdfs/nodename:/hadoop/dfs/name
+      - /data:/data:ro
     environment:
       - CLUSTER_NAME=db
     env_file:
@@ -123,6 +127,7 @@ services:
       - datanode
     volumes:
       - /mnt/storage/HOME/data/hdfs/historyserver:/hadoop/yarn/timeline
+      - /data:/data:ro
     env_file:
       - ./hadoop.env
     networks:
@@ -146,6 +151,7 @@ services:
       - namenode
     volumes:
       - /mnt/storage/HOME/data/hdfs/datanode:/hadoop/dfs/data
+      - /data:/data:ro
     env_file:
       - ./hadoop.env
     networks:

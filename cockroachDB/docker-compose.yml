@@ -9,5 +9,6 @@ services:
         - roachnet
     volumes:
       - /mnt/storage/HOME/data/cockroach:/cockroach/cockroach-data
+      - /data:/data:ro
 networks:
   roachnet:

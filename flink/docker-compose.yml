@@ -6,6 +6,8 @@ services:
       - 6123
       - 8081
     command: jobmanager
+    volumes:
+      - /data:/data:ro
     environment:
       - JOB_MANAGER_RPC_ADDRESS=jobmanager
 
@@ -17,6 +19,8 @@ services:
     depends_on:
       - jobmanager
     command: taskmanager
+    volumes:
+      - /data:/data:ro
     links:
       - "jobmanager:jobmanager"
     environment:
