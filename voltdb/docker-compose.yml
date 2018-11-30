@@ -15,6 +15,8 @@ services:
     entrypoint: >
       sh -c "voltdb init -C /opt/voltdb/deployment.xml -D /var/voltdb/ &&
             voltdb start -H voltdb-node1 -D /var/voltdb/ --ignore=thp"
+    volumes:
+      - ~/data/voltdb:/var/voltdb
 networks:
   voltdb-network:
     driver: 'bridge'
