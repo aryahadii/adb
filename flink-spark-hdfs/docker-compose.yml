@@ -161,5 +161,4 @@ volumes:
 
 networks:
   flink-spark:
-    name: flink-spark
     driver: bridge
