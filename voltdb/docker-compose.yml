@@ -10,8 +10,6 @@ services:
     environment:
       - 'HOSTCOUNT=1'
       - 'HOSTS=voltdb-node1'
-    volumes:
-      - /data:/data:ro
     networks:
       - voltdb-network
     entrypoint: >
@@ -19,6 +17,7 @@ services:
             voltdb start -H voltdb-node1 -D /var/voltdb/ --ignore=thp"
     volumes:
       - ~/data/voltdb:/var/voltdb
+      - /data:/data:ro
 networks:
   voltdb-network:
     driver: 'bridge'
