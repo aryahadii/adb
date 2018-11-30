@@ -16,7 +16,7 @@ services:
       sh -c "voltdb init -C /opt/voltdb/deployment.xml -D /var/voltdb/ &&
             voltdb start -H voltdb-node1 -D /var/voltdb/ --ignore=thp"
     volumes:
-      - ~/data/voltdb:/var/voltdb
+      - /mnt/storage/HOME/data/voltdb:/var/voltdb
       - /data:/data:ro
 networks:
   voltdb-network:
