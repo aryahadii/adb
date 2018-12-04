@@ -9,7 +9,7 @@ services:
     volumes:
       - /data:/data:ro
     environment:
-      - JOB_MANAGER_RPC_ADDRESS=jobmanager
+      - JOB_MANAGER_RPC_ADDRESS=jobmanager-HOME
 
   taskmanager-HOME:
     image: ${FLINK_DOCKER_IMAGE_NAME:-flink}
@@ -17,11 +17,11 @@ services:
       - 6121
       - 6122
     depends_on:
-      - jobmanager
+      - jobmanager-HOME
     command: taskmanager
     volumes:
       - /data:/data:ro
     links:
       - jobmanager-HOME:jobmanager
     environment:
-      - JOB_MANAGER_RPC_ADDRESS=jobmanager
+      - JOB_MANAGER_RPC_ADDRESS=jobmanager-HOME
