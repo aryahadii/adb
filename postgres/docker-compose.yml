@@ -3,6 +3,7 @@ postgres:
   expose:
     - 5432
   restart: always
+  shm_size: 512M
   volumes:
     - ./data:/var/lib/postgresql/data
   environment:
