@@ -10,7 +10,4 @@ mkdir /mnt/storage/$@/data/hdfs
 mkdir /mnt/storage/$@/data/hdfs/historyserver
 mkdir /mnt/storage/$@/data/hdfs/datanode
 mkdir /mnt/storage/$@/data/hdfs/nodename
-sed -i -e "s/HOME/$@/g" ./cockroachDB/docker-compose.yml
-sed -i -e "s/HOME/$@/g" ./flink-spark-hdfs/docker-compose.yml
-sed -i -e "s/HOME/$@/g" ./postgres/docker-compose.yml
-sed -i -e "s/HOME/$@/g" ./voltdb/docker-compose.yml
+find ./ -type f -exec sed -i -e "s/HOME/$@/g" {} \;

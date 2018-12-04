@@ -1,14 +1,10 @@
 version: '2'
 
 services:
-  roach:
-    container_name: cockroach-kimia
+  roach-HOME:
+    container_name: cockroach
     image: cockroachdb/cockroach:latest
     command: start --insecure
-    networks:
-        - roachnet
     volumes:
       - /mnt/storage/HOME/data/cockroach:/cockroach/cockroach-data
       - /data:/data:ro
-networks:
-  roachnet:

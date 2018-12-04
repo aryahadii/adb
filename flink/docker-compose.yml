@@ -1,6 +1,6 @@
 version: "2.1"
 services:
-  jobmanager:
+  jobmanager-HOME:
     image: ${FLINK_DOCKER_IMAGE_NAME:-flink}
     expose:
       - 6123
@@ -11,7 +11,7 @@ services:
     environment:
       - JOB_MANAGER_RPC_ADDRESS=jobmanager
 
-  taskmanager:
+  taskmanager-HOME:
     image: ${FLINK_DOCKER_IMAGE_NAME:-flink}
     expose:
       - 6121
@@ -22,6 +22,6 @@ services:
     volumes:
       - /data:/data:ro
     links:
-      - "jobmanager:jobmanager"
+      - jobmanager-HOME:jobmanager
     environment:
       - JOB_MANAGER_RPC_ADDRESS=jobmanager

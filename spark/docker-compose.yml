@@ -1,6 +1,6 @@
 version: "3.5"
 services:
-  master:
+  spark-master-HOME:
     image: gettyimages/spark
     command: bin/spark-class org.apache.spark.deploy.master.Master -h master
     container_name: spark_master
@@ -22,10 +22,8 @@ services:
     volumes:
       - ./conf/master:/conf
       - /data:/data:ro
-    networks:
-      - sprk
 
-  worker:
+  spark-worker-HOME:
     image: gettyimages/spark
     command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://master:7077
     container_name: spark_worker
@@ -38,7 +36,7 @@ services:
       SPARK_WORKER_WEBUI_PORT: 8081
       SPARK_PUBLIC_DNS: localhost
     links:
-      - master
+      - spark-master-HOME:master
     expose:
       - 7012
       - 7013
@@ -49,10 +47,4 @@ services:
     volumes:
       - ./conf/worker:/conf
       - /data:/data:ro
-    networks:
-      - sprk
 
-networks:
-  sprk:
-    name: spark
-    driver: bridge
