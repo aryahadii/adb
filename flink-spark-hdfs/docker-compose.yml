@@ -104,6 +104,9 @@ services:
     depends_on:
       - namenode
       - datanode
+    links:
+      - hdfs-namenode-HOME:namenode
+      - hdfs-datanode-HOME:datanode
     env_file:
       - ./hadoop.env
 
@@ -113,6 +116,9 @@ services:
     depends_on:
       - namenode
       - datanode
+    links:
+      - hdfs-namenode-HOME:namenode
+      - hdfs-datanode-HOME:datanode
     volumes:
       - /mnt/storage/HOME/data/hdfs/historyserver:/hadoop/yarn/timeline
       - /data:/data:ro
@@ -125,6 +131,9 @@ services:
     depends_on:
       - namenode
       - datanode
+    links:
+      - hdfs-namenode-HOME:namenode
+      - hdfs-datanode-HOME:datanode
     env_file:
       - ./hadoop.env
 
@@ -133,6 +142,8 @@ services:
     container_name: datanode
     depends_on:
       - namenode
+    links:
+      - hdfs-namenode-HOME:namenode
     volumes:
       - /mnt/storage/HOME/data/hdfs/datanode:/hadoop/dfs/data
       - /data:/data:ro
