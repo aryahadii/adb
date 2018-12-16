@@ -7,7 +7,6 @@ services:
   hdfs-spark-master-HOME:
     image: gettyimages/spark:2.3.0-hadoop-2.8
     command: bin/spark-class org.apache.spark.deploy.master.Master -h master
-    container_name: spark-master
     hostname: master
     environment:
       MASTER: spark://master:7077
@@ -33,7 +32,6 @@ services:
   hdfs-spark-worker-HOME:
     image: gettyimages/spark:2.3.0-hadoop-2.8
     command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://master:7077
-    container_name: spark-worker
     hostname: worker
     environment:
       SPARK_MASTER: spark://master:7077
@@ -60,7 +58,6 @@ services:
 
   hdfs-flink-jobmanager-HOME:
     image: flink:1.6.2-hadoop28
-    container_name: flink-jobmanager
     expose:
       - "6123"
       - "8081"
@@ -72,7 +69,6 @@ services:
 
   hdfs-flink-taskmanager-HOME:
     image: flink:1.6.2-hadoop28
-    container_name: flink-taskmanager
     expose:
       - "6121"
       - "6122"
@@ -89,7 +85,6 @@ services:
 
   hdfs-namenode-HOME:
     image: bde2020/hadoop-namenode:1.2.1-hadoop2.8-java8
-    container_name: namenode
     volumes:
       - /mnt/storage/HOME/data/hdfs/nodename:/hadoop/dfs/name
       - /data:/data:ro
@@ -100,7 +95,6 @@ services:
 
   hdfs-resourcemanager-HOME:
     image: bde2020/hadoop-resourcemanager:1.2.1-hadoop2.8-java8
-    container_name: resourcemanager
     depends_on:
       - hdfs-namenode-HOME
       - hdfs-datanode-HOME
@@ -112,7 +106,6 @@ services:
 
   hdfs-historyserver-HOME:
     image: bde2020/hadoop-historyserver:1.2.1-hadoop2.8-java8
-    container_name: historyserver
     depends_on:
       - hdfs-namenode-HOME
       - hdfs-datanode-HOME
@@ -127,7 +120,6 @@ services:
 
   hdfs-nodemanager-HOME:
     image: bde2020/hadoop-nodemanager:1.2.1-hadoop2.8-java8
-    container_name: nodemanager
     depends_on:
       - hdfs-namenode-HOME
       - hdfs-datanode-HOME
@@ -139,7 +131,6 @@ services:
 
   hdfs-datanode-HOME:
     image: bde2020/hadoop-datanode:1.2.1-hadoop2.8-java8
-    container_name: datanode
     depends_on:
       - hdfs-namenode-HOME
     links:

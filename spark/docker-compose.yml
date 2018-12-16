@@ -3,7 +3,6 @@ services:
   spark-master-HOME:
     image: gettyimages/spark
     command: bin/spark-class org.apache.spark.deploy.master.Master -h master
-    container_name: spark_master
     hostname: master
     environment:
       MASTER: spark://master:7077
@@ -26,7 +25,6 @@ services:
   spark-worker-HOME:
     image: gettyimages/spark
     command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://master:7077
-    container_name: spark_worker
     hostname: worker
     environment:
       SPARK_CONF_DIR: /conf

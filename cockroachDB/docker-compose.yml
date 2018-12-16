@@ -2,7 +2,6 @@ version: '2'
 
 services:
   roach-HOME:
-    container_name: cockroach
     image: cockroachdb/cockroach:latest
     command: start --insecure
     volumes:
