@@ -11,8 +11,10 @@ services:
       - 'HOSTCOUNT=1'
       - 'HOSTS=voltdb-node-HOME'
     entrypoint: >
-      sh -c "voltdb init -C /opt/voltdb/deployment.xml -D /var/voltdb/ &&
-            voltdb start -H voltdb-node-HOME -D /var/voltdb/ --ignore=thp"
+      sh -c "if [ ! -d "/var/voltdb/voltdbroot/" ]; then 
+            voltdb init -C /opt/voltdb/deployment.xml -D /var/voltdb/
+            fi &&
+            voltdb start -H voltdb-node-MILAD -D /var/voltdb/ --ignore=thp"
     volumes:
       - /mnt/storage/HOME/data/voltdb:/var/voltdb
       - /data:/data:ro
