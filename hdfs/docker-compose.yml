@@ -43,7 +43,7 @@ services:
       SPARK_WORKER_WEBUI_PORT: 8081
       CORE_CONF_fs_defaultFS: hdfs://hdfs:8020
     links:
-      - hdfs-spark-master:master
+      - hdfs-spark-master-HOME:master
       - hdfs-namenode-HOME:namenode
     expose:
       - 7012
