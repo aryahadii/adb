@@ -1,6 +1,6 @@
 #! /bin/bash
 # getting a string and make desire dirs and change all valumes in docker-compose files
-
+# run by : bash configure_volumes.sh ($whoami)
 mkdir /mnt/storage/$@
 mkdir /mnt/storage/$@/data
 mkdir /mnt/storage/$@/data/postgres
