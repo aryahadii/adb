@@ -102,8 +102,8 @@ services:
     image: bde2020/hadoop-resourcemanager:1.2.1-hadoop2.8-java8
     container_name: resourcemanager
     depends_on:
-      - namenode
-      - datanode
+      - hdfs-namenode-HOME
+      - hdfs-datanode-HOME
     links:
       - hdfs-namenode-HOME:namenode
       - hdfs-datanode-HOME:datanode
@@ -114,8 +114,8 @@ services:
     image: bde2020/hadoop-historyserver:1.2.1-hadoop2.8-java8
     container_name: historyserver
     depends_on:
-      - namenode
-      - datanode
+      - hdfs-namenode-HOME
+      - hdfs-datanode-HOME
     links:
       - hdfs-namenode-HOME:namenode
       - hdfs-datanode-HOME:datanode
@@ -129,8 +129,8 @@ services:
     image: bde2020/hadoop-nodemanager:1.2.1-hadoop2.8-java8
     container_name: nodemanager
     depends_on:
-      - namenode
-      - datanode
+      - hdfs-namenode-HOME
+      - hdfs-datanode-HOME
     links:
       - hdfs-namenode-HOME:namenode
       - hdfs-datanode-HOME:datanode
@@ -141,7 +141,7 @@ services:
     image: bde2020/hadoop-datanode:1.2.1-hadoop2.8-java8
     container_name: datanode
     depends_on:
-      - namenode
+      - hdfs-namenode-HOME
     links:
       - hdfs-namenode-HOME:namenode
     volumes:
